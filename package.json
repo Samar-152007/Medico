@@ -1,5 +1,5 @@
 {
-  "name": "@figma/my-make-file",
+  "name": "medico",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -74,11 +74,10 @@
   "scripts": {
     "dev": "vite",
     "start": "vite",
-    "build": "vite build"
+    "build": "tsc && vite build",
+    "typecheck": "tsc --noEmit"
   },
-  "pnpm": {
-    "overrides": {
-      "vite": "6.3.5"
-    }
+  "overrides": {
+    "vite": "6.3.5"
   }
 }

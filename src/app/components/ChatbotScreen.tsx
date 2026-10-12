@@ -22,7 +22,10 @@ interface Props {
 }
 
 export function ChatbotScreen({ navigate, locationState }: Props) {
-  const selectedLanguage = locationState?.language || "en";
+  const selectedLanguage: "en" | "hi" | "mr" =
+    locationState?.language === "hi" || locationState?.language === "mr"
+      ? locationState.language
+      : "en";
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
@@ -293,7 +296,7 @@ export function ChatbotScreen({ navigate, locationState }: Props) {
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+            onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
             placeholder={t.placeholder}
             className="flex-1 bg-gray-100 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
